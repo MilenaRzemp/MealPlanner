@@ -1,0 +1,33 @@
+.add, .usun-potrawe, .side, .okienko {
+    display: none;
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+h2 {    
+    page-break-before: always;
+}
+
+td {
+    border: solid 1px rgb(102, 102, 102);
+    padding: 5px;
+}
+
+.lista-zakupow {
+    display: flex;
+    justify-content: space-between;
+    width: 99%;
+    margin: auto;
+}
+
+.zakupy-lista {
+    list-style: circle;
+}
+
+.lista-tytul {
+    text-align: center;
+    font-size: 1.2em;
+    
+}

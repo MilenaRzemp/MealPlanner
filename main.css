@@ -1,0 +1,441 @@
+* {
+    font-family: 'Source Sans Pro', sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+body {
+    background: rgb(254,172,94);
+    background: linear-gradient(321deg, rgba(254,172,94,1) 0%, rgba(241,160,120,1) 10%, rgba(226,146,152,1) 32%, rgba(199,121,208,1) 63%, rgba(81,212,254,1) 100%);
+    min-height: 100vh;
+    color: white;
+}
+
+h1 {
+    width: 80%;
+    margin: auto;
+    padding: 30px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.8em;
+}
+
+h2 {
+    margin-left: 10%;
+    padding: 50px 0 30px;
+    font-weight: 600;
+}
+
+table {
+    width: 80%;
+    margin: auto;
+    font-weight: 600;
+}
+
+tr {
+    height: 100px;
+}
+
+td, th {
+    /* border: 1px solid black; */
+    width: 12.5%;
+    text-align: center;    
+    font-weight: 600;
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 20px );
+        -webkit-backdrop-filter: blur( 20px );
+    border-radius: 8px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+th {   
+    background: rgba( 255, 255, 255, 0.25 ); 
+}
+
+.add {
+    /* width: 7%; */
+    text-align: center;
+    cursor: pointer;
+    font-size: 2rem;
+    background: rgba( 255, 255, 255, 0.25 );
+}
+
+.add:hover {    
+    box-shadow: inset 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+}
+
+.add-podpis {    
+    font-size: 1rem;
+}
+
+.posilek {
+    width: 13%;
+}
+
+.okienko {
+    visibility: hidden;
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    width: 50%;
+    min-height: 300px;
+    padding: 10px;
+    /* padding-bottom: 20px; */
+    background: rgba(213,134,208,0.85);
+    overflow: auto;
+    list-style: none;
+    /* color: black; */
+    border-radius: 8px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+    .okienko {
+        background: rgba( 255, 255, 255, 0.15 );
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 20px );
+            -webkit-backdrop-filter: blur( 20px );
+    }
+}
+
+.close {
+    float: right;
+    width: 30px;
+    height: 30px;
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    border-radius: 4px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    color: white;
+}
+
+.close:hover {
+    box-shadow: inset 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+}
+
+.input {
+    /* display: flex;
+    flex-direction: column;
+    gap: 3px; */
+    height: 100px;
+    overflow: hidden;
+    padding: 3px;
+    font-weight: 300;
+    /* background: rgba(255, 255, 255, 0.15); */
+}
+
+.input:hover {
+    overflow: visible;
+}
+
+.usun-potrawe {
+    display: none;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 2px;
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 20px );
+        -webkit-backdrop-filter: blur( 20px );
+    border-radius: 8px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    color: white;
+}
+.input:hover .usun-potrawe {
+    display: block;
+    float: right;
+    /* position: absolute;
+    right: 0; */
+    cursor: pointer;
+}
+
+.ul1 {    
+    list-style: none;
+    position: absolute;
+    left: 0;
+    width: 46%;
+    border-radius: 8px 0 0 8px;
+    margin: 0;
+    padding: 5px 0;
+    text-align: right;
+}
+
+.ul2 {
+    list-style: none;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    padding: 5px 0;
+    border-radius: 0 8px 8px 0;
+    text-align: left;
+    height: 300px;
+}
+
+li {
+    padding: 5px;
+}
+
+li:hover {
+    border-top: solid 1px white;
+    border-bottom: solid 1px white;
+}
+
+li:hover > .ul2 {
+    display: block;
+}
+
+.zrodlo {
+    font-size: 0.8rem;
+    font-style: italic;
+    cursor: context-menu;
+}
+
+.lista-zakupow {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.lista-tytul {
+    text-align: center;
+    padding: 10px;
+    font-weight: 600;
+    background: rgba( 255, 255, 255, 0.1 );
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.zakupy-lista {
+    list-style: inside;
+    font-size: 0.9em;
+    padding: 0;
+    margin-left: 3px;
+}
+
+.zakupy-lista:hover {
+    background: none;
+}
+
+.lista-zakupow > div {
+    width: 19%;
+    min-height: 300px;
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 20px );
+        -webkit-backdrop-filter: blur( 20px );
+    border-radius: 8px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 80px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    text-align: center;
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 20px );
+        -webkit-backdrop-filter: blur( 20px );
+    border-radius: 8px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );    
+}
+
+.side:hover {  
+    cursor: pointer;  
+    box-shadow: inset 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+}
+
+.clear-all {
+    position: absolute;
+    top: 302px;
+    left: 91%;
+}
+
+.print {
+    position: absolute;
+    top: 202px;
+    left: 91%;
+}
+
+#save {    
+    position: absolute;
+    top: 102px;
+    left: 91%;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 90%;
+    padding: 10px;
+    gap: 20px 50px;
+}
+
+fieldset {
+    width: 100%;
+    display: flex;
+    padding: 20px;
+    margin: 10px 0;
+    align-items: flex-end;
+    gap: 10px;
+    border-color: rgba( 255, 255, 255, 0.4);
+}
+
+textarea {
+    background: rgba( 255, 255, 255, 0 );
+    color: white;
+    width: 100%;
+    height: 160px;
+    border: hidden;
+    resize: none;
+    cursor: default;
+}
+
+.porcje {
+    visibility: hidden;
+}
+
+#pora-dnia {
+    width: 153px;
+}
+
+.button-okragly {
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    margin: 2px;
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 20px );
+        -webkit-backdrop-filter: blur( 20px );
+    border-radius: 8px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    color: white;
+}
+
+.button-okragly:hover {
+    box-shadow: inset 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+}
+
+.dodaj {
+    text-align: center;
+    margin-left: 12px;
+    /* font-size: 0.8rem; */
+}
+
+/* .lista-skladnikow {
+    margin-left: 10px;
+} */
+
+#dodaj-potrawe {
+    height: 500px;
+    width: 795px;
+    top: 20%;
+    left: 22%;
+}
+
+#dodaj-zapisz {
+    position: absolute;
+    bottom: 15px;
+    left: 40%;
+    width: 150px;
+    height: 40px;
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    border-radius: 4px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    color: white;
+}
+
+#dodaj-zapisz:hover {
+    box-shadow: inset 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+}
+
+.form-margin {
+    margin-left: 10px;
+    font-size: 0.9rem;
+}
+
+#lista-skladnikow {
+    max-height: 130px;
+    width: 600px;
+    overflow: auto;
+    margin-left: 10px;
+    font-size: 0.9rem;
+}
+
+.skladniki {
+    padding: 0;
+    list-style: inside;
+    cursor: not-allowed;
+}
+
+#lista-skladnikow {    
+    display: flex;
+    flex-direction: row;
+}
+
+.wypelniacz {
+    width: 150px;
+}
+
+#lista-skladnikow div {
+    display: flex;
+    flex-direction: column;
+}
+
+#lista-skladnikow input {
+    border: none;
+    background: none;
+    color: white;
+}
+
+.pole-listy-skladnikow {
+    border: none;
+    position: relative;
+    top: 120px;
+    left: 10px;
+    padding-left: 0;
+    padding-right: 0;
+    width: 680px;
+    margin-left: 0;
+}
+
+.pole-dodaj-skladnik {
+    position: absolute;
+    top: 100px;
+    width: 680px;
+}
+
+#reset {
+    position: absolute;
+    top: 260px;
+    left: 78%;
+    width: 100px;
+    height: 30px;
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    border-radius: 4px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    color: white;
+}
+
+#reset:hover {
+    box-shadow: inset 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+}
+
+.lista2 {
+    cursor: pointer;
+}

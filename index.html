@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Planer posiłków</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- STYLE -->
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" type="text/css" media="print" href="print.css" />
+    <!-- FONTY -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Tygodniowy Plan Posiłków</h1> 
+    <table id="tabela">
+        <tr>
+            <th id="add-all" class="add"> + <div class="add-podpis">Dodaj potrawę</div></th>
+            <th>Poniedziałek</th>
+            <th>Wtorek</th>
+            <th>Środa</th>
+            <th>Czwartek</th>
+            <th>Piątek</th>
+            <th>Sobota</th>
+            <th>Niedziela</th>
+        </tr>
+        <tr>
+            <th id="add-sniad" class="add"> + <div class="add-podpis">Dodaj śniadanie</div></th>
+            <td class="SNIADANIE-PONIEDZIALEK"><div class="input input-sniadanie"></div></td>
+            <td class="SNIADANIE-WTOREK"><div class="input input-sniadanie"></div></td>
+            <td class="SNIADANIE-SRODA"><div class="input input-sniadanie"></div></td>
+            <td class="SNIADANIE-CZWARTEK"><div class="input input-sniadanie"></div></td>
+            <td class="SNIADANIE-PIATEK"><div class="input input-sniadanie"></div></td>
+            <td class="SNIADANIE-SOBOTA"><div class="input input-sniadanie"></div></td>
+            <td class="SNIADANIE-NIEDZIELA"><div class="input input-sniadanie"></div></td>
+        </tr>
+        <tr>
+            <th id="add-2sniad" class="add"> + <div class="add-podpis">Dodaj II śniadanie</div></th>
+            <td class="DRUGIE_SNIADANIE-PONIEDZIALEK"><div class="input input-2-sniadanie"></div></td>
+            <td class="DRUGIE_SNIADANIE-WTOREK"><div class="input input-2-sniadanie"></div></td>
+            <td class="DRUGIE_SNIADANIE-SRODA"><div class="input input-2-sniadanie"></div></td>
+            <td class="DRUGIE_SNIADANIE-CZWARTEK"><div class="input input-2-sniadanie"></div></td>
+            <td class="DRUGIE_SNIADANIE-PIATEK"><div class="input input-2-sniadanie"></div></td>
+            <td class="DRUGIE_SNIADANIE-SOBOTA"><div class="input input-2-sniadanie"></div></td>
+            <td class="DRUGIE_SNIADANIE-NIEDZIELA"><div class="input input-2-sniadanie"></div></td>
+        </tr>
+        <tr>
+            <th id="add-obiad" class="add"> + <div class="add-podpis">Dodaj obiad</div></th>
+            <td class="OBIAD-PONIEDZIALEK"><div class="input input-obiad"></div></td>
+            <td class="OBIAD-WTOREK"><div class="input input-obiad"></div></td>
+            <td class="OBIAD-SRODA"><div class="input input-obiad"></div></td>
+            <td class="OBIAD-CZWARTEK"><div class="input input-obiad"></div></td>
+            <td class="OBIAD-PIATEK"><div class="input input-obiad"></div></td>
+            <td class="OBIAD-SOBOTA"><div class="input input-obiad"></div></td>
+            <td class="OBIAD-NIEDZIELA"><div class="input input-obiad"></div></td>
+        </tr>
+        <tr>
+            <th id="add-kolac" class="add"> + <div class="add-podpis">Dodaj kolację</div></th>
+            <td class="KOLACJA-PONIEDZIALEK"><div class="input input-kolacje"></div></td>
+            <td class="KOLACJA-WTOREK"><div class="input input-kolacje"></div></td>
+            <td class="KOLACJA-SRODA"><div class="input input-kolacje"></div></td>
+            <td class="KOLACJA-CZWARTEK"><div class="input input-kolacje"></div></td>
+            <td class="KOLACJA-PIATEK"><div class="input input-kolacje"></div></td>
+            <td class="KOLACJA-SOBOTA"><div class="input input-kolacje"></div></td>
+            <td class="KOLACJA-NIEDZIELA"><div class="input input-kolacje"></div></td>
+        </tr>
+    </table>
+    <div class="side clear-all">Wyczyść wszystko</div>
+    <div class="side print" onclick="window.print()">Drukuj</div>
+    <div class="side" id="save">Zapisz plan</div>
+    <h2>Lista zakupów</h2>
+    <div class="lista-zakupow">
+        <div id="owoce">
+            <div class="lista-tytul">Owoce i warzywa</div>
+            <ul></ul>
+        </div>
+        <div id="nabial">            
+            <div class="lista-tytul">Nabiał i świeże</div>
+            <ul></ul>
+        </div>
+        <div id="konserwy">            
+            <div class="lista-tytul">Konserwy i przyprawy</div>
+            <ul></ul>
+        </div>
+        <div id="sypkie">            
+            <div class="lista-tytul">Produkty sypkie</div>
+            <ul></ul>
+        </div>
+        <div id="pozostale">
+            <div class="lista-tytul">Pozostałe</div>
+            <ul></ul>
+        </div>
+    </div>
+    <div id="dodaj-potrawe" class="okienko">        
+        <button type="button" id="close-dodaj" class="close">&times;</button>
+        <form id="dodaj-przepis-form" action="#">
+            <label>Pora dnia 
+                <select name="poraDnia" id="pora-dnia">
+                    <option value="SNIADANIE">Śniadanie</option>
+                    <option value="DRUGIE_SNIADANIE">Drugie śniadanie</option>
+                    <option value="OBIAD">Obiad</option>
+                    <option value="KOLACJA">Kolacja</option>
+                </select>
+            </label>
+            <label>Źródło przepisu
+                <input name="zrodlo">
+            </label>
+            <label>Kategoria
+                <input name="kategoria" list="kategorie" required>
+                <datalist id="kategorie">
+                    <option>Dodaj nową...</option>
+                </datalist>
+            </label>
+            <label>Nazwa potrawy
+                <input name="nazwa" required>
+            </label>
+            <label class="porcje">Porcje: 
+                <select name="porcje">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                </select>
+            </label>
+            <fieldset class="pole-listy-skladnikow">
+                <legend class="form-margin">Lista składników:</legend>
+                <div name="lista-skladnikow" id="lista-skladnikow">
+                    <div id="skladniki">Składnik:
+                        <div class="wypelniacz"></div>
+                    </div>                    
+                    <div id="ilosc">Ilość:
+                        <div class="wypelniacz"></div>
+                    </div>
+                    <div id="jednostka">Jednostka:
+                        <div class="wypelniacz"></div>
+                    </div>
+                </div>
+            </fieldset>
+            <button type="submit" id="dodaj-zapisz">Zapisz potrawę</button>
+            <input type="button" id="reset" value="Resetuj listę">
+        </form>
+        <form id="dodaj-skladnik-form" action="#">
+            <fieldset class="pole-dodaj-skladnik">
+                <legend>Dodawanie składników</legend>
+                <div>Składnik:
+                    <input name="skladnik" required>
+                </div>
+                <div>Ilość:
+                    <input type="number" name="ilosc" step="0.5" min="0" required>
+                </div>
+                <div>Jednostka:
+                    <select name="jednostka">
+                        <option value="SZTUKA">szt</option>
+                        <option value="GRAM">g</option>
+                        <option value="MILILITR">ml</option>
+                        <option value="LYZKA">łyżka</option>
+                        <option value="LYZECZKA">łyżeczka</option>
+                        <option value="SZKLANKA">szkl</option>
+                    </select>
+                </div>
+                <div class="dodaj">DODAJ
+                    <button type="submit" class="button-okragly" id="dodaj-skladnik"> + </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div id="okienko-sniadania" class="okienko">
+        <button type="button" id="close-sniad" class="close">&times;</button>
+        <ul id="sn-ul1" class="ul1">
+        </ul>
+        <!-- <ul class="ul1">
+            <li>Jajka
+                <ul class="ul2">
+                    <li class="lista-sniad">sadzone</li>
+                    <li class="lista-sniad">w koszulce</li>
+                    <li class="lista-sniad">gotowane</li>
+                </ul>
+            </li>
+            <li>Jajecznica
+                <ul class="ul2">
+                    <li class="lista-sniad">z grzybami</li>
+                    <li class="lista-sniad">z pomidorami</li>
+                    <li class="lista-sniad">z awokado</li>
+                    <li class="lista-sniad">na maśle</li>
+                </ul>
+            </li>
+            <li>Omlet
+                <ul class="ul2">
+                    <li class="lista-sniad">owsiany z fetą</li>
+                    <li class="lista-sniad">pieczarkowy</li>
+                    <li class="lista-sniad">ze szpinakiem</li>
+                    <li class="lista-sniad">z kapustą <div class="zrodlo">("EKO Kuchnia" s. 155)</div></li>
+                    <li class="lista-sniad">z camembertem <div class="zrodlo">("Jedz pysznie" s. 52)</div></li>
+                    <li class="lista-sniad">z cukinią <div class="zrodlo">("Kulinarna kolorowanka" s. 32)</div></li>
+                    <li class="lista-sniad">kokosowy <div class="zrodlo">("Jedz pysznie" s. 24)</div></li>
+                </ul>
+            </li>
+            <li>Szakszuka
+                <ul class="ul2">
+                    <li class="lista-sniad">śródziemnomorska</li>
+                    <li class="lista-sniad">meksykańska</li>
+                </ul>
+            </li>
+            <li>Owsianka
+                <ul class="ul2">
+                    <li class="lista-sniad">z chia i owocami</li>
+                    <li class="lista-sniad">z masłem orzechowym</li>
+                </ul>
+            </li>
+            <li>Kasza
+                <ul class="ul2">
+                    <li class="lista-sniad">gryczana z serkiem wiejskim i warzywami <div class="zrodlo">(Dieta. Niski indeks glikiemiczny" s. 91)</div></li>
+                    <li class="lista-sniad">bulgur z ziołami <div class="zrodlo">("Kulinarna kolorowanka" s. 32)</div></li>
+                </ul>
+            </li>
+            <li>Soczewica
+                <ul class="ul2">
+                    <li class="lista-sniad">smażona <div class="zrodlo">("Jadłonomia" s. 197)</div></li>
+                </ul>
+            </li>
+            <li>Kanapki
+                <ul class="ul2">
+                    <li class="lista-sniad">z pieczarką i jajkiem sadzonym</li>
+                    <li class="lista-sniad">z hummusem i warzywami</li>
+                    <li class="lista-sniad">z ulubionymi dodatkami</li>
+                </ul>
+            </li>
+        </ul> -->
+    </div>
+    <div id="okienko-2-sniadania" class="okienko">
+        <button type="button" id="close-2-sniad" class="close">&times;</button>
+        <ul id="2-sn-ul1" class="ul1">
+        </ul>
+            <!-- <li>Kanapki
+                <ul class="ul2">
+                    <li class="lista-2-sniad">z ulubionymi dodatkami</li>
+                    <li class="lista-2-sniad">z hummusem i warzywami</li>
+                    <li class="lista-2-sniad">z pastą z fasoli i cebulką <div class="zrodlo">("Dieta na roślinach" s. 203)</div></li>
+                    <li class="lista-2-sniad">z pasztetem z soczewicy <div class="zrodlo">("EKO kuchnia" s. 47)</div></li>
+                    <li class="lista-2-sniad">z pastą z pieczonego czosnku <div class="zrodlo">("Jadłonomia" s. 83)</div></li>
+                </ul>
+            </li>
+            <li>Bowl
+                <ul class="ul2">
+                    <li class="lista-2-sniad">sprzątanie spiżarni</li>
+                    <li class="lista-2-sniad">z dzikim ryżem <div class="zrodlo">("Dieta na roślinach" s. 103)</div></li>
+                    <li class="lista-2-sniad">bibimbap <div class="zrodlo">("Jeść zdrowiej" s. 200)</div></li>
+                </ul>
+            </li>
+            <li>Zupa
+                <ul class="ul2">
+                    <li class="lista-2-sniad">ogórkowa</li>
+                    <li class="lista-2-sniad">pomidorowa</li>
+                    <li class="lista-2-sniad">z soczewicą i pomidorami</li>
+                    <li class="lista-2-sniad">z soczewicą i kalafiorem <div class="zrodlo">("Dieta na roślinach" s. 89)</div></li>
+                    <li class="lista-2-sniad">harira <div class="zrodlo">("Dieta na roślinach" s. 91)</div></li>
+                    <li class="lista-2-sniad">z zielonej soczewicy <div class="zrodlo">("Jadłonomia" s. 203)</div></li>
+                    <li class="lista-2-sniad">hiszpańska z ciecierzycy <div class="zrodlo">("Dieta na roślinach" s. 97)</div></li>
+                    <li class="lista-2-sniad">grochowa z wędzonką z tofu <div class="zrodlo">("Dieta na roślinach" s. 94)</div></li>
+                    <li class="lista-2-sniad">miso</li>
+                    <li class="lista-2-sniad">krupnik <div class="zrodlo">("Rozkoszne" s. 104)</div></li>
+                </ul>
+            </li>
+        </ul> -->
+    </div>
+    <div id="okienko-obiady" class="okienko">
+        <button type="button" id="close-obiady" class="close">&times;</button>
+        <ul id="obiad-ul1" class="ul1">
+            <!-- <li>Gotowane
+                <ul class="ul2">
+                    <li class="lista-obiady">tofu tikka masala <div class="zrodlo">("Dieta na roślinach" s. 108)</div></li>
+                    <li class="lista-obiady">chili sin carne <div class="zrodlo">("Dieta na roślinach" s. 110)</div></li>
+                    <li class="lista-obiady">curry z ciecierzycy i kalafiora <div class="zrodlo">("Dieta na roślinach" s. 119)</div></li>
+                    <li class="lista-obiady">kostki sojowe z grzybami <div class="zrodlo">("Dieta na roślinach" s. 143)</div></li>
+                    <li class="lista-obiady">bataty z masłem orzechowym <div class="zrodlo">("Dieta na roślinach" s. 145)</div></li>
+                    <li class="lista-obiady">bakłażany z masłem orzechowym <div class="zrodlo">("Jadłonomia" s. 151)</div></li>
+                    <li class="lista-obiady">bigos <div class="zrodlo">("Rozkoszne" s. 140)</div></li>
+                    <li class="lista-obiady">fasolki po bretońsku <div class="zrodlo">("Rozkoszne" s. 126)</div></li>
+                </ul>
+            </li>
+            <li>Smażone
+                <ul class="ul2">
+                    <li class="lista-obiady">tofu z bakłażanem i sosem kolendrowym <div class="zrodlo">("Gotuj jak Top CHef" s. 90)</div></li>
+                </ul>
+            </li>
+            <li>Zapiekana
+                <ul class="ul2">
+                    <li class="lista-obiady">papryka faszerowana komosą <div class="zrodlo">("Kulinarna kolorowanka" s. 36)</div></li>
+                    <li class="lista-obiady">pizza razowa</li>
+                    <li class="lista-obiady">tarta na spodzie z batatów <div class="zrodlo">("Jeść zdrowiej" s. 225)</div></li>
+                </ul>
+            </li>
+            <li>Zawijane
+                <ul class="ul2">
+                    <li class="lista-obiady">gołąbki</li>
+                    <li class="lista-obiady">wrapy z falaflem i sałatką</li>
+                    <li class="lista-obiady">wrapy z tofu i warzywami <div class="zrodlo">("Dieta na roślinach" s. 105)</div></li>
+                    <li class="lista-obiady">quesadille z serem i fasolką <div class="zrodlo">("Dieta na roślinach" s. 227)</div></li>
+                    <li class="lista-obiady">buritto</li>
+                </ul>
+            </li> -->
+        </ul>
+    </div>
+    <div id="okienko-kolacje" class="okienko">
+        <button type="button" id="close-kolacje" class="close">&times;</button>
+        <ul id="kolac-ul1" class="ul1">
+            <!-- <li>Jajecznica
+                <ul class="ul2">
+                    <li class="lista-kolacje">z grzybami</li>
+                    <li class="lista-kolacje">z pomidorami</li>
+                    <li class="lista-kolacje">z awokado</li>
+                    <li class="lista-kolacje">na maśle</li>
+                </ul>
+            </li>
+            <li>Omlet
+                <ul class="ul2">
+                    <li class="lista-kolacje">owsiany z fetą</li>
+                    <li class="lista-kolacje">pieczarkowy</li>
+                    <li class="lista-kolacje">ze szpinakiem</li>
+                    <li class="lista-kolacje">kokosowy</li>
+                </ul>
+            </li>
+            <li>Jajka
+                <ul class="ul2">
+                    <li class="lista-kolacje">sadzone</li>
+                    <li class="lista-kolacje">w koszulce</li>
+                    <li class="lista-kolacje">gotowane</li>
+                </ul>
+            </li>
+            <li>Szakszuka
+                <ul class="ul2">
+                    <li class="lista-kolacje">śródziemnomorska</li>
+                    <li class="lista-kolacje">meksykańska</li>
+                </ul>
+            </li>
+            <li>Kanapki
+                <ul class="ul2">
+                    <li class="lista-kolacje">z pieczarką i jajkiem sadzonym</li>
+                    <li class="lista-kolacje">z hummusem i warzywami</li>
+                    <li class="lista-kolacje">ulubione dodatki</li>
+                </ul>
+            </li> -->
+        </ul>
+    </div>
+    <script type="module" src="main.js"></script>
+</body>
+</html>

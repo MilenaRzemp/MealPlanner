@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"name": "workspace",
+			"path": "."
+		},
+		{
+			"name": "portfolio",
+			"path": "..\\portfolio"
+		},
+		{
+			"name": "img",
+			"path": "..\\portfolio\\img"
+		},
+		{
+			"path": "..\\lovecard"
+		},
+		{
+			"path": "..\\typescript"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "typescript"
+	}
+}
