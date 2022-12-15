@@ -1,10 +1,11 @@
-export function ObiektDoWysylki (nazwa, nazwaWspolna, poraDnia, porcje, produkty, zrodlo) {
+export function ObiektDoWysylki (nazwa, nazwaWspolna, poraDnia, porcje, produkty, zrodlo, kalorycznosc) {
     this.nazwa = nazwa;
     this.nazwaWspolna = nazwaWspolna;
     this.poraDnia = poraDnia;
     this.porcje = porcje;
     this.produkty = produkty;
     this.zrodlo = zrodlo;
+    this.kalorycznosc = kalorycznosc;
 }
 
 export function Produkt (ilosc, jednostka, nazwa) {

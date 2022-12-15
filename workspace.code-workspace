@@ -20,6 +20,6 @@
 		}
 	],
 	"settings": {
-		"liveServer.settings.multiRootWorkspaceName": "typescript"
+		"liveServer.settings.multiRootWorkspaceName": "workspace"
 	}
 }

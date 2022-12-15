@@ -91,7 +91,7 @@ const pobierzListePrzepisowKolac = async () => {
 
 function utworzListeDlaKategorii(nazwaWspolna, przepisy) {
     let ul2 = '<ul class="ul2">';
-    ul2 += przepisy.filter(p => p.nazwaWspolna === nazwaWspolna).map(p => '<li class="lista2" id="' + p.id + '">' + p.nazwa + '<div class="zrodlo">' + p.zrodlo + '</div></li>').join('');
+    ul2 += przepisy.filter(p => p.nazwaWspolna === nazwaWspolna).map(p => '<li class="lista2" id="' + p.id + '">' + p.nazwa + (p.kalorycznosc !== "" ? ('<div class="kcal"> ' + p.kalorycznosc + '</div>') : "") + '<div class="zrodlo">' + p.zrodlo + '</div></li>').join('');
     ul2 += '</ul>';
     return ul2;
 }
@@ -205,7 +205,7 @@ function dodajPotraweForm(e) {
     let formData = new FormData(e.target);
     let fromProps = Object.fromEntries(formData);
     let produkty = [];
-    let listaPrzefiltr = Object.entries(fromProps).filter(([nazwa, wartosc]) => nazwa !== "nazwa" && nazwa !== "poraDnia" && nazwa !== "zrodlo" && nazwa !== "kategoria" && nazwa !== "porcje");
+    let listaPrzefiltr = Object.entries(fromProps).filter(([nazwa, wartosc]) => nazwa !== "nazwa" && nazwa !== "poraDnia" && nazwa !== "zrodlo" && nazwa !== "kategoria" && nazwa !== "porcje" && nazwa !== "kalorycznosc");
     let skladniki = [];
     let ilosci = [];
     let jednostki = [];
@@ -228,7 +228,7 @@ function dodajPotraweForm(e) {
         let nowyProdukt = new Produkt(ilosc, jednostka, nazwa);
         produkty.push(nowyProdukt);
     }
-    let nowaPotrawa = new ObiektDoWysylki(fromProps.nazwa, fromProps.kategoria, fromProps.poraDnia, fromProps.porcje, produkty, fromProps.zrodlo);
+    let nowaPotrawa = new ObiektDoWysylki(fromProps.nazwa, fromProps.kategoria, fromProps.poraDnia, fromProps.porcje, produkty, fromProps.zrodlo, fromProps.kalorycznosc);
     resetListySkladnikow();
     wyslijPrzepis(JSON.stringify(nowaPotrawa));
 }
